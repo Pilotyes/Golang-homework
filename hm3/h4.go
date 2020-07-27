@@ -39,7 +39,10 @@ func main() {
 		if err.(*os.PathError).Err.Error() != "no such file or directory" {
 			panic(err)
 		} else {
-			err = ioutil.WriteFile("./output.json", wb, 0644)
+			err := ioutil.WriteFile("./output.json", wb, 0644)
+			if err != nil {
+				panic(err)
+			}
 		}
 	} else {
 		if string(rb) != string(wb) {
